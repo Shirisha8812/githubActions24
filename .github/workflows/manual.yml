@@ -21,7 +21,7 @@ jobs:
     - name: Send greeting
       run: echo "build step"
 
-   buildjob:
+  buildjob:
     
     runs-on: ubuntu-latest
 
