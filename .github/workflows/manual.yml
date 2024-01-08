@@ -28,3 +28,12 @@ jobs:
     steps:
     - name: build job
       run: echo building code  
+
+  test-app:
+    
+    runs-on: macos-latest
+    steps:
+    - name: build test app
+      run: echo build on mac os
+    - name: packaging test app
+      run: echo testing app  
