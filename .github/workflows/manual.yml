@@ -21,15 +21,24 @@ jobs:
     - name: Send greeting
       run: echo "build step"
 
-  buildjob:
+  build-app:
     
     runs-on: ubuntu-latest
 
     steps:
-    - name: build job
-      run: echo building code  
+    - uses: actions/checkout@v3
 
-  test-app:
+    - name: single line script  
+      run: echo build job single line
+
+    - name: multiple line script
+      run: |
+       echo first line
+       echo secong line
+
+
+  build-db:
+    needs: build-app
     
     runs-on: macos-latest
     steps:
@@ -37,3 +46,11 @@ jobs:
       run: echo build on mac os
     - name: packaging test app
       run: echo testing app  
+
+  package-app:
+    needs: [build-app,build-db]
+    runs-on: windows-latest
+    steps:
+      - name: packaing
+        run: echo packaing build app and db app   
+
