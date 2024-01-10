@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: custome environment value to variable
+
+# Controls when the workflow will run
+on:
+ 
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  custom_github_environment_variable:
+   
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: set the environment variable
+        id: step_one
+        run: 
+          echo "action_state=yello" >> $GITHUB_NEW
+ 
+      - name: use the value from previous step
+        id: step_two
+        run: 
+         echo "${{ env.GITHUB_NEW}}"
