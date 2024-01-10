@@ -19,9 +19,9 @@ jobs:
       - name: set the environment variable
         id: step_one
         run: 
-          echo "action_state=yello" >> $GITHUB_NEW
+          echo "action_state=yello" >> $GITHUB_ENV
  
       - name: use the value from previous step
         id: step_two
         run: 
-         echo "${{ env.GITHUB_NEW}}"
+         echo "${{ env.action_state}}"
