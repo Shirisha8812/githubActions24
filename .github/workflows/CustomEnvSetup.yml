@@ -18,7 +18,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: set the environment variable
         id: step_one
-        run: 
+        run: |
           echo "action_state=yellow" >> $GITHUB_ENV
           echo "test_account=account" >>$GITHUB_ENV
  
