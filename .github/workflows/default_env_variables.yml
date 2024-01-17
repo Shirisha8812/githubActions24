@@ -1,0 +1,37 @@
+name: fetching github default environment variables
+# Controls when the workflow will run
+on:
+ 
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  ubuntu_efault_github_environment_variable:
+   
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+   
+        - run: env
+
+  windows_default_github_environment_variable:
+   
+        runs-on: windows-latest
+        
+            # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+              # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+           
+            - run: env
+        
+  mac_default_github_environment_variable:
+   
+                runs-on: macos-latest
+                
+                    # Steps represent a sequence of tasks that will be executed as part of the job
+                steps:
+                      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+                   
+                    - run: env
