@@ -1,0 +1,31 @@
+name: artifacts
+# Controls when the workflow will run
+on:
+  push: 
+  workflow_dispatch:
+
+jobs:
+  job_1:
+    name: upload artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: create file
+        run: echo "This is the first file to work on artifact example. This file can be used to download in subsequent tests" >> file.txt
+
+      - uses: actions/upload-artifact@v2
+        with: 
+         name: file
+         path: file.txt
+         retention-days: 2
+  job_2:
+    needs: job_1
+    name: download artifact
+    runs-on: ubuntu-latest   
+    steps:
+      
+      - uses: actions/download-artifact@v2        
+        with:
+          name: file
+      - run: cat file.txt 
+
+
