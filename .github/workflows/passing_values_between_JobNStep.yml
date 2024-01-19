@@ -15,12 +15,12 @@ jobs:
     steps:
       - name: Set environment variable
         id: set_env
-        run: echo "var1=this-is-env" >> $GITHUB_ENV
+        run: echo var1="this-is-env" >> $GITHUB_ENV
 
       - name: Set and output variables
         id: var_setup
         run: |
-          echo "var2=welcome" >> $GITHUB_OUTPUT
+          echo var2=welcome" >> $GITHUB_OUTPUT
           echo "var2=$(date +'%Y - %M - %D - %H-%M')" >> $GITHUB_OUTPUT
 
       - name: Get variables
