@@ -30,6 +30,6 @@ jobs:
     steps:
       - name: get variables from job1
         run: |
-         echo "This is env variable: ${{ needs.job1.output.var1}}"
-         echo "This is static variable from step1: ${{ needs.job1.output.var1}}"
-         echo "This is dynamic variable from step1: ${{ needs.job1.output.var1}}"        
+         echo "This is env variable: ${{ needs.job1.outputs.var_output.var1}}"
+         echo "This is static variable from step1: ${{ needs.job1.outputs.var_output.var2}}"
+         echo "This is dynamic variable from step1: ${{ needs.job1.outputs.var_output.var3}}"        
