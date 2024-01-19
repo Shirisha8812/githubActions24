@@ -20,7 +20,7 @@ jobs:
       - name: Set and output variables
         id: var_setup
         run: |
-          echo var2=welcome" >> $GITHUB_OUTPUT
+          echo "var2=welcome" >> $GITHUB_OUTPUT
           echo "var2=$(date +'%Y - %M - %D - %H-%M')" >> $GITHUB_OUTPUT
 
       - name: Get variables
