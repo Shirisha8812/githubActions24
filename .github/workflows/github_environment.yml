@@ -15,4 +15,4 @@ jobs:
     steps:
       - name: 'fetch the prod first secret'
         run: |
-          echo "PROD_SECRET: ${{ secrets.PROD_SECRET }}"
+          echo "PROD_SECRET: ${{ secrets.PROD_SECRET1 }}"
