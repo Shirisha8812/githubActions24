@@ -1,0 +1,25 @@
+name: Passing variables between steps and jobs
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set environment variable
+        run: echo "var1=this-is-env" >> $GITHUB_ENV
+
+      - name: Set and output variables
+        id: var_setup
+        run: |
+          echo "::set-output name=var2::welcome"
+          echo "::set-output name=var3::$(date +'%Y - %M - %D - %H-%M')"
+
+      - name: Get variables
+        id: var_get
+        run: |
+          echo "This is env variable: ${{ env.var1 }}"
+          echo "This is static variable from step1: ${{ steps.var_setup.outputs.var2 }}"
+          echo "This is dynamic variable from step1: ${{ steps.var_setup.outputs.var3 }}"

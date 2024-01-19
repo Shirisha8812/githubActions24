@@ -1,7 +1,7 @@
 name: artifacts
 # Controls when the workflow will run
 on:
-  push: 
+  
   workflow_dispatch:
 
 jobs:
