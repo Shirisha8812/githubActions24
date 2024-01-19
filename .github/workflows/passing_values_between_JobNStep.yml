@@ -9,15 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       id: var_output
+      output1: ${{steps.var_setup.outputs.var2}}
+      output2: ${{steps.var_setup.outputs.var3}}
+      output3: ${{steps.set_env.outputs.var1}}
     steps:
       - name: Set environment variable
+        id: set_env
         run: echo "var1=this-is-env" >> $GITHUB_ENV
 
       - name: Set and output variables
         id: var_setup
         run: |
-          echo "::set-output name=var2::welcome"
-          echo "::set-output name=var3::$(date +'%Y - %M - %D - %H-%M')"
+          echo "var2=welcome" >> $GITHUB_OUTPUT
+          echo "var2=$(date +'%Y - %M - %D - %H-%M')" >> $GITHUB_OUTPUT
 
       - name: Get variables
         id: var_get
@@ -31,9 +35,4 @@ jobs:
     needs: job1
     steps:
       - name: Get variables from job1
-        run: |
-          echo "This is env variable: ${{ needs.job1.outputs.var_output.var1 }}"
-          echo "This is static variable from step1: ${{ needs.job1.var_setup.outputs.var2 }}"
-          echo "This is dynamic variable from step1: ${{ needs.job1.outputs.var_setup.var3 }}"
-          echo output1: ${{needs.job1.outputs.id.var2}}
-          echo output2: ${{needs.job1.outputs.steps.var_setup.var3}} 
+        run: echo ${{needs.job1.outputs.output1}} ${{needs.job1.outputs.output2}} ${{needs.job1.outputs.output3}} 
