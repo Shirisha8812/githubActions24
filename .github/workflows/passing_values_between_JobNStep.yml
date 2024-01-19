@@ -30,4 +30,4 @@ jobs:
           echo "This is dynamic variable from step1: ${{ needs.job1.outputs.var_output.var3 }}"
           echo output1: ${{needs.job1.outputs.var2}}
           echo output2: ${{needs.job1.outputs.var3}}
-          echo output3: ${{needs.job1.outputs.id}}
+          echo output3: ${{needs.job1.outputs.var_output.var3}}
