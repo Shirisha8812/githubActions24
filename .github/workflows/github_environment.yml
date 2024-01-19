@@ -1,18 +1,18 @@
 name: Github environments secrets
+
 # Controls when the workflow will run
 on:
-  push: 
- 
+  workflow_dispatch:
+
 jobs:
-    deployment:
-     runs-on: ubuntu-latest    
+  deployment:
+    runs-on: ubuntu-latest    
     
     environment: 
       name: production
       url: http://github.com
         
-
-    Steps:
-     - name: 'fetch the prod first secret'
-     run: |
-       echo "PROD_SECRET: $ {{ secrets.PROD_SECRET }}" 
+    steps:
+      - name: 'fetch the prod first secret'
+        run: |
+          echo "PROD_SECRET: ${{ secrets.PROD_SECRET }}"
